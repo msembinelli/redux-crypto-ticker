@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import Price from './price';
+import AssetPanel from '../containers/asset_panel';
+import BlockchainPanel from '../containers/blockchain_panel';
 
 export default class App extends Component {
   render() {
     return (
-      <Price />
+      <div><AssetPanel /></div>
+//      <BlockchainPanel />
     );
   }
 }
