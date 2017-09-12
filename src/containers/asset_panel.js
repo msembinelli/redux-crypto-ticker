@@ -8,9 +8,14 @@ import Info from '../components/info'
 class AssetPanel extends Component {
   render() {
     return (
-      <div className="no-gutter-card">
-        <Ticker />
-        <div className="card-group">
+      <div className='card'>
+        <div className="card-header">
+        </div>
+        <Ticker
+        asset='Bitcoin (BTC)'
+        price='$4157 (0.69%)'
+        data={ [4153, 3990, 4300, 4225, 4468] } />
+        <div className='row no-pad'>
           <Info
             label1='Market Cap:'
             value1='$68,000,000,000'
@@ -22,11 +27,9 @@ class AssetPanel extends Component {
             label2='Max Supply:'
             value2='21,000,000' />
         </div>
-        <div className='card'>
           <div className='card-footer'>
             <p className="card-text"><small className="text-muted">Last updated 2 mins ago</small></p>
           </div>
-        </div>
       </div>
     );
   }
