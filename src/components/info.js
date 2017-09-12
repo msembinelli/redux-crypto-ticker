@@ -2,10 +2,10 @@ import React from 'react';
 
 export default (props) => {
     return (
-        <div className="card">
+        <div className="card no-gutter-card no-border">
           <div className="card-block">
-            <h3 className="card-title">Card title</h3>
-            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <h5 className="card-title">{ props.label1 } { props.value1 }</h5>
+            <h5 className="card-title">{ props.label2 } { props.value2 }</h5>
           </div>
         </div>
     );

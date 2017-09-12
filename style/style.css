@@ -1,4 +1,6 @@
-/*.price {
-  margin: 20px 0px;
-  text-align: center;
-}*/
+.no-gutter-card > .card {
+  margin: 0;
+}
+
+.card.no-border {
+}
