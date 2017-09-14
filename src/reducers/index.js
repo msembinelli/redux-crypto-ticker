@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import AssetReducer from './reducer_asset';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
-});
+    asset: AssetReducer
+  });
 
 export default rootReducer;
