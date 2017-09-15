@@ -7,17 +7,20 @@ import Refresh from '../containers/refresh';
 
 // TODO: Replace placeholder text with data API (coinmarketcap)
 class AssetPanel extends Component {
-  renderAsset(assetData) {
-    console.log(assetData);
-  }
-
   render() {
-    console.log(this.props.asset);
+    if (this.props.asset.length < 1) {
+      var obj = 'Loading...';
+    }
+    else {
+      console.log(this.props.asset[0][0]);
+      var obj = JSON.parse(this.props.asset[0][0]['price_usd']);
+    }
+
     return (
       <div className='card'>
         <Ticker
         asset='Bitcoin (BTC)'
-        price='$4157 (0.69%)'
+        price={obj}
         data={ [4153, 3990, 4300, 4225, 4468] } />
         <div className='card-block'>
           <div className='row'>
