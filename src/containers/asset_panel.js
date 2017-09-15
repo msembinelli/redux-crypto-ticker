@@ -9,18 +9,17 @@ import Refresh from '../containers/refresh';
 class AssetPanel extends Component {
   render() {
     if (this.props.asset.length < 1) {
-      var obj = 'Loading...';
+      var price = 'Loading...';
     }
     else {
-      console.log(this.props.asset[0][0]);
-      var obj = JSON.parse(this.props.asset[0][0]['price_usd']);
+      var price = '$' + this.props.asset[0][0].price_usd;
     }
 
     return (
       <div className='card'>
         <Ticker
         asset='Bitcoin (BTC)'
-        price={obj}
+        price={price}
         data={ [4153, 3990, 4300, 4225, 4468] } />
         <div className='card-block'>
           <div className='row'>
