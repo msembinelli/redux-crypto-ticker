@@ -19,15 +19,15 @@ import Refresh from '../containers/refresh';
 // Note: data can be aggregated so that we can have the same number of samples
 // on every request.
 
-class AssetPanel extends Component {
+class CoinPanel extends Component {
   render() {
-    if (this.props.coin_historical.length > 0) {
-      var close_prices = this.props.coin_historical[0].Data.map( Data => Data.close);
+    if (this.props.coinHistorical.length > 0) {
+      var close_prices = this.props.coinHistorical[0].Data.map( Data => Data.close);
     }
 
-    if (this.props.coin_price.length > 0) {
-      var symbol = this.props.coin_price[0].RAW.BTC.USD.FROMSYMBOL;
-      var price = this.props.coin_price[0].DISPLAY.BTC.USD.PRICE;
+    if (this.props.coinPrice.length > 0) {
+      var symbol = this.props.coinPrice[0].RAW.BTC.USD.FROMSYMBOL;
+      var price = this.props.coinPrice[0].DISPLAY.BTC.USD.PRICE;
     }
 
     return (
@@ -64,8 +64,8 @@ class AssetPanel extends Component {
   }
 }
 
-function mapStateToProps({coin_historical, coin_price}) {
-  return { coin_historical, coin_price };
+function mapStateToProps({coinHistorical, coinPrice}) {
+  return { coinHistorical, coinPrice };
 }
 
-export default connect(mapStateToProps)(AssetPanel);
+export default connect(mapStateToProps)(CoinPanel);
