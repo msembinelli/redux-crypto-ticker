@@ -28,6 +28,10 @@ class CoinPanel extends Component {
     if (this.props.coinPrice.length > 0) {
       var symbol = this.props.coinPrice[0].RAW.BTC.USD.FROMSYMBOL;
       var price = this.props.coinPrice[0].DISPLAY.BTC.USD.PRICE;
+      var mktcap = this.props.coinPrice[0].DISPLAY.BTC.USD.MKTCAP;
+      var supply = this.props.coinPrice[0].DISPLAY.BTC.USD.SUPPLY;
+      var volume = this.props.coinPrice[0].DISPLAY.BTC.USD.VOLUME24HOURTO;
+      console.log(this.props.coinPrice[0]);
     }
 
     return (
@@ -42,15 +46,15 @@ class CoinPanel extends Component {
           <div className='row'>
             <Info
               label='Market Cap:'
-              value='$68B' />
+              value={ mktcap } />
             <Info
-              label='Volume (24h):'
-              value='$1.5B' />
+              label='Vol (24h):'
+              value= { volume } />
               </div>
           <div className='row'>
             <Info
               label='Circulating:'
-              value='16,558,187' />
+              value={ supply } />
             <Info
               label='Max:'
               value='21,000,000' />
