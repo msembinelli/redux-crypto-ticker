@@ -1,12 +1,12 @@
 import React from 'react';
 
 export default (props) => {
-  if (!props.price) {
+  if (!props.price || !props.percent) {
     return <div> Loading... </div>
   }
   return (
     <h3 className='card-title'>
-      { props.price }
+      { props.price } ({ props.percent }%)
     </h3>
   );
 }

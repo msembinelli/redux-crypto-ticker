@@ -8,7 +8,7 @@ class Refresh extends Component {
   constructor(props) {
     super(props);
     var myHistoType = HISTO_TYPE.HOUR;
-    this.state = {asset: 'bitcoin', histoType: myHistoType, fromSymbol: 'BTC', toSymbol: 'USD', limit: '23', aggregate: '1' };
+    this.state = {histoType: myHistoType, fromSymbol: 'BTC', toSymbol: 'USD', limit: '23', aggregate: '1' };
 
     this.onClick= this.onClick.bind(this);
     }

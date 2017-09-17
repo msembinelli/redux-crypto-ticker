@@ -1,5 +1,5 @@
 import React from 'react';
-import Price from './price';
+import PricePercent from './price_percent';
 import Coin from './coin';
 import CoinIcon from './coin_icon';
 import Chart from './chart';
@@ -19,7 +19,9 @@ export default (props) => {
               </div>
             </div>
             <Coin name={ props.name } symbol={ props.symbol } />
-            <Price price={ props.price }/>
+            <div className='pp-row'>
+                <PricePercent price={ props.price } percent={ props.percent } />
+            </div>
           </div>
           <Chart data={ props.data } />
         </div>

@@ -31,6 +31,7 @@ class CoinPanel extends Component {
       var mktcap = this.props.coinPrice[0].DISPLAY.BTC.USD.MKTCAP;
       var supply = this.props.coinPrice[0].DISPLAY.BTC.USD.SUPPLY;
       var volume = this.props.coinPrice[0].DISPLAY.BTC.USD.VOLUME24HOURTO;
+      var percent = this.props.coinPrice[0].DISPLAY.BTC.USD.CHANGEPCT24HOUR;
       console.log(this.props.coinPrice[0]);
     }
 
@@ -41,6 +42,7 @@ class CoinPanel extends Component {
         iconSize={ 48 }
         symbol={ symbol }
         price={ price }
+        percent={ percent }
         data={ close_prices } />
         <div className='card-block'>
           <div className='row'>
@@ -50,7 +52,7 @@ class CoinPanel extends Component {
             <Info
               label='Vol (24h):'
               value= { volume } />
-              </div>
+          </div>
           <div className='row'>
             <Info
               label='Circulating:'
