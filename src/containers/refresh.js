@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchAsset } from '../actions/fetch_asset';
-import { fetchAssetHistorical, HISTO_TYPE } from '../actions/fetch_asset_historical';
+import { fetchCoinHistorical, HISTO_TYPE } from '../actions/fetch_coin_historical';
+import { fetchCoinPrice } from '../actions/fetch_coin_price';
 
 class Refresh extends Component {
   constructor(props) {
@@ -14,10 +14,9 @@ class Refresh extends Component {
     }
 
   onClick(event) {
-    // Go and fetch asset data
-    this.props.fetchAsset(this.state.asset);
-    this.setState({asset: 'bitcoin'});
-    this.props.fetchAssetHistorical(this.state.histoType, this.state.fromSymbol, this.state.toSymbol, this.state.limit, this.state.aggregate);
+    // Go and fetch coin data
+    this.props.fetchCoinHistorical(this.state.histoType, this.state.fromSymbol, this.state.toSymbol, this.state.limit, this.state.aggregate);
+    this.props.fetchCoinPrice(this.state.fromSymbol, this.state.toSymbol);
   }
 
   render() {
@@ -32,7 +31,7 @@ class Refresh extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchAsset, fetchAssetHistorical }, dispatch);
+  return bindActionCreators({ fetchCoinHistorical, fetchCoinPrice }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Refresh);

@@ -21,22 +21,22 @@ import Refresh from '../containers/refresh';
 
 class AssetPanel extends Component {
   render() {
-    if (this.props.asset.length < 1) {
-      var price = 'Loading...';
-    }
-    else {
-      var price = '$' + this.props.asset[0][0].price_usd;
+    if (this.props.coin_historical.length > 0) {
+      var close_prices = this.props.coin_historical[0].Data.map( Data => Data.close);
     }
 
-    if (this.props.asset_historical.length > 0) {
-      var close_prices = this.props.asset_historical[0].Data.map( Data => Data.close);
+    if (this.props.coin_price.length > 0) {
+      var symbol = this.props.coin_price[0].RAW.BTC.USD.FROMSYMBOL;
+      var price = this.props.coin_price[0].DISPLAY.BTC.USD.PRICE;
     }
-    
+
     return (
       <div className='card'>
         <Ticker
-        asset='Bitcoin (BTC)'
-        price={price}
+        name='Bitcoin'
+        iconSize={ 48 }
+        symbol={ symbol }
+        price={ price }
         data={ close_prices } />
         <div className='card-block'>
           <div className='row'>
@@ -64,8 +64,8 @@ class AssetPanel extends Component {
   }
 }
 
-function mapStateToProps({asset, asset_historical}) {
-  return { asset, asset_historical };
+function mapStateToProps({coin_historical, coin_price}) {
+  return { coin_historical, coin_price };
 }
 
 export default connect(mapStateToProps)(AssetPanel);

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import AssetReducer from './reducer_asset';
-import AssetHistoricalReducer from './reducer_asset_historical';
+import CoinHistoricalReducer from './reducer_coin_historical';
+import CoinPriceReducer from './reducer_coin_price';
 
 const rootReducer = combineReducers({
-    asset: AssetReducer,
-    asset_historical: AssetHistoricalReducer
+    coin_historical: CoinHistoricalReducer,
+    coin_price: CoinPriceReducer,
   });
 
 export default rootReducer;
