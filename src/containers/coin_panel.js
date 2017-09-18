@@ -50,7 +50,7 @@ class CoinPanel extends Component {
       <div className='card'>
         <Ticker
         name='Bitcoin'
-        iconSize={ 48 }
+        iconSize='10vw'
         symbol={ symbol }
         price={ price }
         percent={ percent }
@@ -59,7 +59,7 @@ class CoinPanel extends Component {
           <InfoTable data={ tableData } />
         </div>
         <div className='card-footer'>
-          <p className="card-text"><small className="text-muted">Last updated 2 mins ago</small></p>
+          <p className="card-text"><small className="text-muted">Updated every 10 seconds</small></p>
         </div>
       </div>
     );
