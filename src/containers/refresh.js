@@ -3,15 +3,20 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchCoinHistorical, HISTO_TYPE } from '../actions/fetch_coin_historical';
 import { fetchCoinPrice } from '../actions/fetch_coin_price';
+import { fetchCoinList } from '../actions/fetch_coin_list';
 
 class Refresh extends Component {
   constructor(props) {
     super(props);
     var myHistoType = HISTO_TYPE.HOUR;
-    this.state = {histoType: myHistoType, fromSymbol: 'BTC', toSymbol: 'USD', limit: '23', aggregate: '1' };
+    this.state = {coinList: [], coinName: 'Bitcoin', histoType: myHistoType, fromSymbol: 'BTC', toSymbol: 'USD', limit: '23', aggregate: '1' };
 
     this.onClick= this.onClick.bind(this);
     }
+
+  componentDidMount() {
+    this.props.fetchCoinList();
+  }
 
   onClick(event) {
     // Go and fetch coin data
@@ -31,7 +36,7 @@ class Refresh extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCoinHistorical, fetchCoinPrice }, dispatch);
+  return bindActionCreators({ fetchCoinList, fetchCoinHistorical, fetchCoinPrice }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Refresh);

@@ -46,10 +46,14 @@ class CoinPanel extends Component {
 
     }
 
+    if (this.props.coinList.length > 0 && this.props.coinPrice.length > 0) {
+      var name = this.props.coinList[0].Data[symbol].CoinName;
+    }
+
     return (
       <div className='card'>
         <Ticker
-        name='Bitcoin'
+        name={ name }
         iconSize='48px'
         symbol={ symbol }
         price={ price }
@@ -66,8 +70,8 @@ class CoinPanel extends Component {
   }
 }
 
-function mapStateToProps({coinHistorical, coinPrice}) {
-  return { coinHistorical, coinPrice };
+function mapStateToProps({coinList, coinHistorical, coinPrice}) {
+  return { coinList, coinHistorical, coinPrice };
 }
 
 export default connect(mapStateToProps)(CoinPanel);
