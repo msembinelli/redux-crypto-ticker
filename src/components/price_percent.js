@@ -5,8 +5,8 @@ export default (props) => {
     return <div> Loading... </div>
   }
   return (
-    <h3 className='card-title'>
+    <div className='resizing-text-5'>
       { props.price } ({ props.percent }%)
-    </h3>
+    </div>
   );
 }

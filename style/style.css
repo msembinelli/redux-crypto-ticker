@@ -1,4 +1,18 @@
-.pp-row {
+.card-row {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin: 15px;
+}
+
+.resizing-text-5 {
+  font-size: 5vw;
+}
+
+.resizing-text-3 {
+  font-size: 3vw;
+}
+
+.col-hidden {
+  display: none
 }

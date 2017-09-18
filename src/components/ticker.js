@@ -11,17 +11,13 @@ export default (props) => {
         <div className="card no-gutter-card">
           <div className="card-block">
             <div className='row'>
-              <div className='col-sm-6'>
+              <div className='card-row'>
                 <CoinIcon symbol={ props.symbol } size={ props.iconSize } />
-              </div>
-              <div className='col-sm-6'>
                 <Refresh />
               </div>
             </div>
             <Coin name={ props.name } symbol={ props.symbol } />
-            <div className='pp-row'>
-                <PricePercent price={ props.price } percent={ props.percent } />
-            </div>
+            <PricePercent price={ props.price } percent={ props.percent } />
           </div>
           <Chart data={ props.data } />
         </div>

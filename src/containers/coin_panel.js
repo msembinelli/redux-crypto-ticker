@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Ticker from '../components/ticker'
-import Info from '../components/info'
 import Refresh from '../containers/refresh';
+import InfoTable from '../components/info_table';
 
 // TODO: Replace placeholder text with data API (coinmarketcap)
 
@@ -33,6 +33,17 @@ class CoinPanel extends Component {
       var volume = this.props.coinPrice[0].DISPLAY.BTC.USD.VOLUME24HOURTO;
       var percent = this.props.coinPrice[0].DISPLAY.BTC.USD.CHANGEPCT24HOUR;
       console.log(this.props.coinPrice[0]);
+      var tableData = [{
+          label: 'Market Cap',
+          value: mktcap,
+      }, {
+          label: 'Volume (24h)',
+          value: volume,
+      }, {
+          label: 'Supply',
+          value: supply,
+      }];
+
     }
 
     return (
@@ -45,22 +56,7 @@ class CoinPanel extends Component {
         percent={ percent }
         data={ close_prices } />
         <div className='card-block'>
-          <div className='row'>
-            <Info
-              label='Market Cap:'
-              value={ mktcap } />
-            <Info
-              label='Vol (24h):'
-              value= { volume } />
-          </div>
-          <div className='row'>
-            <Info
-              label='Circulating:'
-              value={ supply } />
-            <Info
-              label='Max:'
-              value='21,000,000' />
-          </div>
+          <InfoTable data={ tableData } />
         </div>
         <div className='card-footer'>
           <p className="card-text"><small className="text-muted">Last updated 2 mins ago</small></p>
