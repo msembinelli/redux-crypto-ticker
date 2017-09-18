@@ -1,3 +1,9 @@
+.card {
+  max-width: 600px;
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+}
 .card-row {
   display: flex;
   flex-direction: row;
@@ -5,14 +11,14 @@
   margin: 15px;
 }
 
-.resizing-text-5 {
-  font-size: 5vw;
-}
-
-.resizing-text-3 {
-  font-size: 3vw;
-}
-
 .col-hidden {
   display: none
+}
+
+.resizing-text-18-26 {
+  font-size: calc(18px + (26 - 18) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.resizing-text-14-20 {
+  font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
 }

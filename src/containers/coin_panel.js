@@ -50,7 +50,7 @@ class CoinPanel extends Component {
       <div className='card'>
         <Ticker
         name='Bitcoin'
-        iconSize='10vw'
+        iconSize='48px'
         symbol={ symbol }
         price={ price }
         percent={ percent }

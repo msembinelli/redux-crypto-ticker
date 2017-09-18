@@ -5,7 +5,7 @@ export default (props) => {
     return <div> Loading... </div>
   }
   return (
-    <div className='resizing-text-5'>
+    <div className='resizing-text-18-26'>
       { props.name } ({ props.symbol })
     </div>
   );
