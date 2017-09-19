@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import CoinPanel from '../containers/coin_panel';
-import BlockchainPanel from '../containers/blockchain_panel';
+import CryptoDeck from './crypto_deck';
 
 export default class App extends Component {
   render() {
     return (
-      <div><CoinPanel /></div>
-//      <BlockchainPanel />
+      <div>
+        <CryptoDeck />
+      </div>
     );
   }
 }

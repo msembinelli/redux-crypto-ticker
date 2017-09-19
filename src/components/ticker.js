@@ -16,13 +16,9 @@ export default (props) => {
         );
     }
     return (
-        <div className="card no-gutter-card">
+        <div>
           <div className="card-block">
-            <div className='row'>
-              <div className='card-row'>
-                <CoinIcon symbol={ props.symbol } size={ props.iconSize } />
-              </div>
-            </div>
+            <CoinIcon symbol={ props.symbol } size={ props.iconSize } />
             <Coin name={ props.name } symbol={ props.symbol } />
             <PricePercent price={ props.price } percent={ props.percent } />
           </div>

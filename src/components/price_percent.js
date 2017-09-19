@@ -2,7 +2,7 @@ import React from 'react';
 
 export default (props) => {
   return (
-    <div className='resizing-text-18-26'>
+    <div className='resizing-text-large'>
       { props.price } ({ props.percent }%)
     </div>
   );

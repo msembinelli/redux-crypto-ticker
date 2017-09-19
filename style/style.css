@@ -1,5 +1,6 @@
 .card {
-  max-width: 600px;
+  max-width: 500px;
+  min-width: 500px;
   margin: 0 auto; /* Added */
   float: none; /* Added */
   margin-bottom: 10px; /* Added */
@@ -15,10 +16,10 @@
   display: none
 }
 
-.resizing-text-18-26 {
-  font-size: calc(18px + (26 - 18) * ((100vw - 300px) / (1600 - 300)));
+.resizing-text-large {
+  font-size: calc(18px + (22 - 18) * ((100vw - 300px) / (1600 - 300)));
 }
 
-.resizing-text-14-20 {
-  font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
+.resizing-text-medium {
+  font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
 }
