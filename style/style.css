@@ -1,19 +1,17 @@
-.card {
-  max-width: 500px;
-  min-width: 500px;
-  margin: 0 auto; /* Added */
-  float: none; /* Added */
-  margin-bottom: 10px; /* Added */
-}
+.custom-card-deck {
+  position: fixed;
+  top: 0;
+  left: 0;
+  }
+
 .card-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   margin: 15px;
 }
 
 .col-hidden {
-  display: none
+  display: none;
 }
 
 .resizing-text-large {

@@ -9,7 +9,7 @@ export default (props) => {
     if (!props.symbol || !props.iconSize || !props.name || !props.data || !props.percent || !props.price) {
         return(
             <div className='card no-gutter-card'>
-                <div className='card-block'>
+                <div className='card-body'>
                     <h3 className='resizing-text-18-26'>Loading...</h3>
                 </div>
             </div>
@@ -17,7 +17,7 @@ export default (props) => {
     }
     return (
         <div>
-          <div className="card-block">
+          <div className="card-body">
             <CoinIcon symbol={ props.symbol } size={ props.iconSize } />
             <Coin name={ props.name } symbol={ props.symbol } />
             <PricePercent price={ props.price } percent={ props.percent } />

@@ -5,8 +5,6 @@ import Ticker from '../components/ticker'
 import Refresh from '../containers/refresh';
 import InfoTable from '../components/info_table';
 
-// TODO: Replace placeholder text with data API (coinmarketcap)
-
 // Charts to implement:
 // 1h - sampled every minute (60m) / aggregate 2 == 30 samples
 // 6h - sampled every minute (360m) / aggregate 12 == 30 samples
@@ -41,6 +39,7 @@ class CoinPanel extends Component {
     }
 
     return (
+      <div className='col'>
       <div className='card'>
       <Refresh />
         <Ticker
@@ -50,7 +49,7 @@ class CoinPanel extends Component {
         price={ price }
         percent={ percent }
         data={ close_prices } />
-        <div className='card-block'>
+        <div className='card-body'>
           <InfoTable data={ tableData } />
         </div>
         <div className='card-footer'>
@@ -58,6 +57,7 @@ class CoinPanel extends Component {
             <small className="text-muted">Updated every 20 seconds</small>
           </p>
         </div>
+      </div>
       </div>
     );
   }

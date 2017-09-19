@@ -17,6 +17,7 @@ class BlockchainPanel extends Component {
     }
 
     return (
+      <div className='col'>
       <div className='card'>
         <div className='card-block'>
           <InfoTable data={ tableData } />
@@ -26,6 +27,7 @@ class BlockchainPanel extends Component {
             <small className="text-muted">Updated every 20 seconds</small>
           </p>
         </div>
+      </div>
       </div>
     );
   }
