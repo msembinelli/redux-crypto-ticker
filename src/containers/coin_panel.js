@@ -21,33 +21,33 @@ import InfoTable from '../components/info_table';
 
 class CoinPanel extends Component {
   render() {
-    if (this.props.coinHistorical.length > 0) {
-      var close_prices = this.props.coinHistorical[0].Data.map( Data => Data.close);
+    if (this.props.coinList) {
+      if (this.props.coinHistorical) {
+        var close_prices = this.props.coinHistorical.Data.map( Data => Data.close);
+      }
+
+      if (this.props.coinPrice) {
+        var symbol = this.props.coinPrice.RAW.BTC.USD.FROMSYMBOL;
+        var price = this.props.coinPrice.DISPLAY.BTC.USD.PRICE;
+        var mktcap = this.props.coinPrice.DISPLAY.BTC.USD.MKTCAP;
+        var supply = this.props.coinPrice.DISPLAY.BTC.USD.SUPPLY;
+        var volume = this.props.coinPrice.DISPLAY.BTC.USD.VOLUME24HOURTO;
+        var percent = this.props.coinPrice.DISPLAY.BTC.USD.CHANGEPCT24HOUR;
+        var tableData = [{
+            label: 'Market Cap',
+            value: mktcap,
+        }, {
+            label: 'Volume (24h)',
+            value: volume,
+        }, {
+            label: 'Supply',
+            value: supply,
+        }];
+
+        var name = this.props.coinList.Data[symbol].CoinName;
     }
 
-    if (this.props.coinPrice.length > 0) {
-      var symbol = this.props.coinPrice[0].RAW.BTC.USD.FROMSYMBOL;
-      var price = this.props.coinPrice[0].DISPLAY.BTC.USD.PRICE;
-      var mktcap = this.props.coinPrice[0].DISPLAY.BTC.USD.MKTCAP;
-      var supply = this.props.coinPrice[0].DISPLAY.BTC.USD.SUPPLY;
-      var volume = this.props.coinPrice[0].DISPLAY.BTC.USD.VOLUME24HOURTO;
-      var percent = this.props.coinPrice[0].DISPLAY.BTC.USD.CHANGEPCT24HOUR;
-      console.log(this.props.coinPrice[0]);
-      var tableData = [{
-          label: 'Market Cap',
-          value: mktcap,
-      }, {
-          label: 'Volume (24h)',
-          value: volume,
-      }, {
-          label: 'Supply',
-          value: supply,
-      }];
 
-    }
-
-    if (this.props.coinList.length > 0 && this.props.coinPrice.length > 0) {
-      var name = this.props.coinList[0].Data[symbol].CoinName;
     }
 
     return (
