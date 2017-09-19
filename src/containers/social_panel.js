@@ -14,8 +14,8 @@ class SocialPanel extends Component {
                      { label: 'Mining Difficulty', value: 1234567 }];
 
     return (
-      <div className='col'>
-      <div className='card'>
+      <div className='col-lg-4'>
+      <div className='card mx-auto'>
         <div className='card-block'>
           <InfoTable data={ tableData } />
         </div>

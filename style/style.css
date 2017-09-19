@@ -1,13 +1,6 @@
-.custom-card-deck {
-  position: fixed;
-  top: 0;
-  left: 0;
-  }
-
-.card-row {
-  display: flex;
-  flex-direction: row;
-  margin: 15px;
+.card {
+  margin-bottom: 30px;
+  max-width: 400px;
 }
 
 .col-hidden {

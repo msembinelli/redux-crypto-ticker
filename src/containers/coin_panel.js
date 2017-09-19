@@ -39,8 +39,8 @@ class CoinPanel extends Component {
     }
 
     return (
-      <div className='col'>
-      <div className='card'>
+      <div className='col-lg-4'>
+      <div className='card mx-auto'>
       <Refresh />
         <Ticker
         name={ name }
