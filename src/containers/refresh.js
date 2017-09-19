@@ -9,34 +9,48 @@ class Refresh extends Component {
   constructor(props) {
     super(props);
     var myHistoType = HISTO_TYPE.HOUR;
-    this.state = {coinList: [], coinName: 'Bitcoin', histoType: myHistoType, fromSymbol: 'BTC', toSymbol: 'USD', limit: '23', aggregate: '1' };
-
-    this.onClick= this.onClick.bind(this);
-    }
-
-  componentDidMount() {
-    this.props.fetchCoinList();
+    this.state = {coinList: null, coinName: 'Bitcoin', histoType: myHistoType, fromSymbol: 'BTC', toSymbol: 'USD', limit: '23', aggregate: '1' };
   }
 
-  onClick(event) {
-    // Go and fetch coin data
+  fetchPriceAndHistorical() {
+    // console.log("fetching price")
     this.props.fetchCoinHistorical(this.state.histoType, this.state.fromSymbol, this.state.toSymbol, this.state.limit, this.state.aggregate);
     this.props.fetchCoinPrice(this.state.fromSymbol, this.state.toSymbol);
   }
 
-  render() {
-    return (
-      <div className='clearfix'>
-        <button type="button" className="btn btn-secondary pull-right" onClick={this.onClick}>
-          <span className="fa fa-refresh"></span>
-        </button>
-      </div>
-    );
+  componentWillReceiveProps(nextProps) {
+    if (this.props.coinPrice !== nextProps.coinPrice) {
+      clearTimeout(this.timeout);
+      this.startPoll();
+    }
   }
+
+  componentWillMount() {
+    if (!this.state.coinList) {
+      // console.log("fetching list");
+      this.props.fetchCoinList();
+    }
+
+    this.fetchPriceAndHistorical();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
+  }
+
+  startPoll() {
+      this.timeout = setTimeout(() => this.fetchPriceAndHistorical(), 20000);
+  }
+
+  render() { return null }
+}
+
+function mapStateToProps({coinPrice}) {
+  return { coinPrice };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchCoinList, fetchCoinHistorical, fetchCoinPrice }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Refresh);
+export default connect(mapStateToProps, mapDispatchToProps)(Refresh);

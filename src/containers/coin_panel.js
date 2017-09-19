@@ -33,25 +33,16 @@ class CoinPanel extends Component {
         var supply = this.props.coinPrice.DISPLAY.BTC.USD.SUPPLY;
         var volume = this.props.coinPrice.DISPLAY.BTC.USD.VOLUME24HOURTO;
         var percent = this.props.coinPrice.DISPLAY.BTC.USD.CHANGEPCT24HOUR;
-        var tableData = [{
-            label: 'Market Cap',
-            value: mktcap,
-        }, {
-            label: 'Volume (24h)',
-            value: volume,
-        }, {
-            label: 'Supply',
-            value: supply,
-        }];
-
+        var tableData = [{ label: 'Market Cap', value: mktcap },
+                         { label: 'Volume (24h)', value: volume },
+                         { label: 'Supply', value: supply }];
         var name = this.props.coinList.Data[symbol].CoinName;
-    }
-
-
+      }
     }
 
     return (
       <div className='card'>
+      <Refresh />
         <Ticker
         name={ name }
         iconSize='48px'
@@ -63,7 +54,9 @@ class CoinPanel extends Component {
           <InfoTable data={ tableData } />
         </div>
         <div className='card-footer'>
-          <p className="card-text"><small className="text-muted">Updated every 10 seconds</small></p>
+          <p className="card-text">
+            <small className="text-muted">Updated every 20 seconds</small>
+          </p>
         </div>
       </div>
     );
