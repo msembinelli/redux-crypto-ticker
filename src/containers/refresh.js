@@ -9,6 +9,7 @@ class Refresh extends Component {
   constructor(props) {
     super(props);
     var myHistoType = HISTO_TYPE.HOUR;
+    // Note: this is a reactJS way of setting initial state. The redux method is to set the default state in the action reducers.
     this.state = {coinList: null, coinName: 'Bitcoin', histoType: myHistoType, fromSymbol: 'BTC', toSymbol: 'USD', limit: '23', aggregate: '1' };
   }
 
