@@ -22,6 +22,32 @@ export default (props) => {
             <Coin name={ props.name } symbol={ props.symbol } />
             <PricePercent price={ props.price } percent={ props.percent } />
           </div>
+          <div className='card-body'>
+          <ul className="nav card-header-tabs">
+            <li className="nav-item">
+              <a className="nav-link active" href="#">1h</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">1d</a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link" href="#">7d</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">1m</a>
+            </li>
+                <li className="nav-item">
+              <a className="nav-link" href="#">6m</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">1y</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">5y</a>
+            </li>
+          </ul>
+          </div>
           <Chart data={ props.data } />
         </div>
     );

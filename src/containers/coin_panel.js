@@ -40,6 +40,19 @@ class CoinPanel extends Component {
         var name = this.props.coinName;
       }
     }
+      // Placeholders while working offline
+      var close_prices = ['4000', '3800', '3600', '3400'];
+      var name = 'Bitcoin';
+      var symbol = 'BTC'
+      var price ='$ 4000';
+      var mktcap = '$ 68B';
+      var supply = '16,557,500';
+      var volume = '500,000,000';
+      var percent = '-8.00';
+      var tableData = [{ label: 'Market Cap', value: mktcap },
+                       { label: 'Volume (24h)', value: volume },
+                       { label: 'Supply', value: supply }];
+
 
     return (
       <div className='col-lg-4'>
