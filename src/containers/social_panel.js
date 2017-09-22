@@ -14,17 +14,17 @@ class SocialPanel extends Component {
       <div className='col-lg-4'>
       <div className='card mx-auto'>
       <div className='card-header'>
-        <h3 className='card-title'>Social</h3>
+        <div className='card-title resizing-text-extra-large'>Social</div>
         <ul className="nav nav-tabs card-header-tabs">
           <li className="nav-item">
-            <a className="nav-link active" href=''>Reddit</a>
+            <a className="nav-link active resizing-text-medium" href=''>Reddit</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href=''>Twitter</a>
+            <a className="nav-link resizing-text-medium" href=''>Twitter</a>
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href=''>StockTwits</a>
+            <a className="nav-link resizing-text-medium" href=''>StockTwits</a>
           </li>
         </ul>
 
