@@ -5,20 +5,15 @@ import InfoTable from '../components/info_table';
 
 class BlockchainPanel extends Component {
   render() {
-    if (this.props.coinList) {
+    if (this.props.blockHash) {
 
-      if (this.props.coinPrice) {
-        var symbol = this.props.coinPrice.RAW.BTC.USD.FROMSYMBOL;
-        var name = this.props.coinList.Data[symbol].CoinName;
-
-        var tableBlockData = [{ label: 'Block Hash', value: '000000bea' },
-                         { label: '# of Transactions', value: 48153 },
-                         { label: 'Block Height', value: 48153 },
-                         { label: 'Mined By', value: 'Slushpool' },
-                         { label: 'Reward', value: '12.5 BTC' },
-                         { label: 'Timestamp', value: 1234567 }
-                       ];
-      }
+      var tableBlockData = [{ label: 'Block Hash', value: this.props.blockHash },
+                       { label: '# of Transactions', value: 48153 },
+                       { label: 'Block Height', value: 48153 },
+                       { label: 'Mined By', value: 'Slushpool' },
+                       { label: 'Reward', value: '12.5 BTC' },
+                       { label: 'Timestamp', value: 1234567 }
+                     ];
     }
 
     return (
@@ -55,8 +50,8 @@ class BlockchainPanel extends Component {
   }
 }
 
-function mapStateToProps({coinList, coinPrice}) {
-  return { coinList, coinPrice };
+function mapStateToProps({blockHash}) {
+  return { blockHash };
 }
 
 export default connect(mapStateToProps)(BlockchainPanel);

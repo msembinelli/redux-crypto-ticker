@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { fetchCoinHistorical, HISTO_TYPE } from '../actions/fetch_coin_historical';
 import { fetchCoinPrice } from '../actions/fetch_coin_price';
 import { fetchCoinList } from '../actions/fetch_coin_list';
+import { fetchBlockHash } from '../actions/fetch_block_hash';
 
 class Refresh extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class Refresh extends Component {
     }
 
     this.fetchPriceAndHistorical();
+    this.props.fetchBlockHash();
   }
 
   componentWillUnmount() {
@@ -46,12 +48,12 @@ class Refresh extends Component {
   render() { return null }
 }
 
-function mapStateToProps({coinPrice}) {
-  return { coinPrice };
+function mapStateToProps({coinPrice, blockHash}) {
+  return { coinPrice, blockHash };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCoinList, fetchCoinHistorical, fetchCoinPrice }, dispatch);
+  return bindActionCreators({ fetchCoinList, fetchCoinHistorical, fetchCoinPrice, fetchBlockHash }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Refresh);
