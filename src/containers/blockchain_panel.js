@@ -39,11 +39,6 @@ class BlockchainPanel extends Component {
               <InfoTable data={ tableBlockData } />
             </div>
           </div>
-          <div className='card-footer'>
-              <p className="card-text">
-                <small className="text-muted">Updated every 20 seconds</small>
-              </p>
-          </div>
         </div>
       </div>
     );

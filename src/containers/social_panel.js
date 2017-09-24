@@ -31,11 +31,6 @@ class SocialPanel extends Component {
       </div>
         <div className='card-block card-body'>
         </div>
-        <div className='card-footer'>
-          <p className="card-text">
-            <small className="text-muted">Updated every 20 seconds</small>
-          </p>
-        </div>
       </div>
       </div>
     );

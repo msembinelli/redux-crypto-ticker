@@ -5,18 +5,6 @@ import Ticker from '../components/ticker'
 import Refresh from '../containers/refresh';
 import InfoTable from '../components/info_table';
 
-// Charts to implement:
-// 1h - sampled every minute (60m) / aggregate 2 == 30 samples
-// 6h - sampled every minute (360m) / aggregate 12 == 30 samples
-// 1d - sampled every hour (24h) / aggregate 1 == 24 samples
-// 5d - sampled every hour (120h) / aggregate 4 == 30 samples
-// 1m - sampled every day (30d) / aggregate 1 = 30 samples
-// 3m - sampled every day (90d) / aggregate 3 = 30 samples
-// 6m - sampled every day (180d) / aggregate 6 = 30 samples
-// 1y - sampled every day (360d) / aggregate 12 = 30 samples
-// Note: data can be aggregated so that we can have the same number of samples
-// on every request.
-
 class CoinPanel extends Component {
   render() {
     if (this.props.coinHistorical) {
@@ -54,11 +42,6 @@ class CoinPanel extends Component {
         data={ close_prices } />
         <div className='card-body'>
           <InfoTable data={ tableData } />
-        </div>
-        <div className='card-footer'>
-          <p className="card-text">
-            <small className="text-muted">Updated every 20 seconds</small>
-          </p>
         </div>
       </div>
       </div>

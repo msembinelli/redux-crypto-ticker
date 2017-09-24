@@ -4,6 +4,7 @@ import CoinHistoricalReducer from './reducer_coin_historical';
 import CoinPriceReducer from './reducer_coin_price';
 import CoinNameReducer from './reducer_coin_name';
 import BlockHashReducer from './reducer_block_hash';
+import CurrencySymbolReducer from './reducer_currency_symbol';
 
 const rootReducer = combineReducers({
     coinName: CoinNameReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     coinHistorical: CoinHistoricalReducer,
     coinPrice: CoinPriceReducer,
     blockHash: BlockHashReducer,
+    currencySymbol: CurrencySymbolReducer,
   });
 
 export default rootReducer;

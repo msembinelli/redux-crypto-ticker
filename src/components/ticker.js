@@ -8,10 +8,7 @@ import * as Icon from 'react-cryptocoins';
 export default (props) => {
     if (!props.symbol || !props.iconSize || !props.name || !props.data || !props.percent || !props.price) {
         return(
-            <div className='card no-gutter-card'>
-                <div className='card-body'>
-                    <h3 className='resizing-text-18-26'>Loading...</h3>
-                </div>
+            <div>
             </div>
         );
     }
@@ -23,7 +20,7 @@ export default (props) => {
             <PricePercent price={ props.price } percent={ props.percent } />
           </div>
           <div className='card-body'>
-          <ul className="nav card-header-tabs">
+          <ul className="nav nav-tabs card-header-tabs">
             <li className="nav-item">
               <a className="nav-link active" href="#">1h</a>
             </li>
@@ -36,6 +33,9 @@ export default (props) => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">1m</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">3m</a>
             </li>
                 <li className="nav-item">
               <a className="nav-link" href="#">6m</a>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchCoinHistorical, HISTO_TYPE } from '../actions/fetch_coin_historical';
+import { fetchCoinHistorical, HISTORICAL_FORMATS } from '../actions/fetch_coin_historical';
 import { fetchCoinPrice } from '../actions/fetch_coin_price';
 import { fetchCoinList } from '../actions/fetch_coin_list';
 import { fetchBlockHash } from '../actions/fetch_block_hash';
@@ -9,14 +9,13 @@ import { fetchBlockHash } from '../actions/fetch_block_hash';
 class Refresh extends Component {
   constructor(props) {
     super(props);
-    var myHistoType = HISTO_TYPE.HOUR;
     // Note: this is a reactJS way of setting initial state. The redux method is to set the default state in the action reducers.
-    this.state = {coinList: null, coinName: 'Bitcoin', histoType: myHistoType, fromSymbol: 'BTC', toSymbol: 'USD', limit: '23', aggregate: '1' };
+    this.state = {coinName: 'Bitcoin', histoFormat: HISTORICAL_FORMATS.ONE_DAY, fromSymbol: 'BTC', toSymbol: 'USD' };
   }
 
   fetchPriceAndHistorical() {
     // console.log("fetching price")
-    this.props.fetchCoinHistorical(this.state.histoType, this.state.fromSymbol, this.state.toSymbol, this.state.limit, this.state.aggregate);
+    this.props.fetchCoinHistorical(this.state.fromSymbol, this.state.toSymbol, this.state.histoFormat);
     this.props.fetchCoinPrice(this.state.fromSymbol, this.state.toSymbol);
   }
 
