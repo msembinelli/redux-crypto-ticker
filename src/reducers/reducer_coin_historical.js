@@ -1,4 +1,4 @@
-import { FETCH_COIN_HISTORICAL } from '../actions/fetch_coin_historical';
+import { FETCH_COIN_HISTORICAL, HISTORICAL_FORMATS } from '../actions/fetch_coin_historical';
 
 export default function(state = null, action) {
   switch(action.type) {

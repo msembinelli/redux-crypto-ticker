@@ -8,25 +8,21 @@ import InfoTable from '../components/info_table';
 class CoinPanel extends Component {
   render() {
     if (this.props.coinHistorical) {
-      var close_prices = this.props.coinHistorical.Data.map( Data => Data.close);
+      var close_prices = this.props.coinHistorical.Data.map( Data => Data.close );
     }
 
     if (this.props.coinPrice) {
-      var symbol = this.props.coinPrice.RAW.BTC.USD.FROMSYMBOL;
-      var price = this.props.coinPrice.DISPLAY.BTC.USD.PRICE;
-      var mktcap = this.props.coinPrice.DISPLAY.BTC.USD.MKTCAP;
-      var supply = this.props.coinPrice.DISPLAY.BTC.USD.SUPPLY;
-      var volume = this.props.coinPrice.DISPLAY.BTC.USD.VOLUME24HOURTO;
-      var percent = this.props.coinPrice.DISPLAY.BTC.USD.CHANGEPCT24HOUR;
+      var fromSymbol = this.props.fromSymbol;
+      var toSymbol = this.props.toSymbol;
+      var price = this.props.coinPrice.DISPLAY[fromSymbol][toSymbol].PRICE;
+      var mktcap = this.props.coinPrice.DISPLAY[fromSymbol][toSymbol].MKTCAP;
+      var supply = this.props.coinPrice.DISPLAY[fromSymbol][toSymbol].SUPPLY;
+      var volume = this.props.coinPrice.DISPLAY[fromSymbol][toSymbol].VOLUME24HOURTO;
+      var percent = this.props.coinPrice.DISPLAY[fromSymbol][toSymbol].CHANGEPCT24HOUR;
       var tableData = [{ label: 'Market Cap', value: mktcap },
                        { label: 'Volume (24h)', value: volume },
                        { label: 'Supply', value: supply }];
-
-      if (this.props.coinList) {
-        var name = this.props.coinList.Data[symbol].CoinName;
-      } else {
-        var name = this.props.coinName;
-      }
+      var name = this.props.coinName;
     }
 
     return (
@@ -36,7 +32,7 @@ class CoinPanel extends Component {
         <Ticker
         name={ name }
         iconSize='48px'
-        symbol={ symbol }
+        symbol={ fromSymbol }
         price={ price }
         percent={ percent }
         data={ close_prices } />
