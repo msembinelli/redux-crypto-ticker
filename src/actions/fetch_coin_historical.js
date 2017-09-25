@@ -22,7 +22,7 @@ export const HISTORICAL_FORMATS = {
 export function fetchCoinHistorical(fromSymbol, toSymbol, format) {
  var actionType = FETCH_COIN_HISTORICAL.SUCCESS;
  const url = `${ROOT_URL}${format.histoType}?fsym=${fromSymbol}&tsym=${toSymbol}&limit=${format.sampleLimit}&aggregate=${format.sampleStep}`;
- const request = axios.get(url).catch(actionType = FETCH_COIN_HISTORICAL.FAIL);
+ const request = axios.get(url);
 
   return {
     type: actionType,

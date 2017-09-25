@@ -11,8 +11,8 @@ export const FETCH_COIN_LIST = {
 export function fetchCoinList() {
   var actionType = FETCH_COIN_LIST.SUCCESS;
   const url = `${PROXY_URL}${ROOT_URL}`;
-  const request = axios.get(url).catch(actionType = FETCH_COIN_LIST.FAIL);
- //console.log(request);
+  const request = axios.get(url);
+  //console.log(request);
   return {
     type: actionType,
     payload: request

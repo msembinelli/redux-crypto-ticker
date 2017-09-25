@@ -15,19 +15,13 @@ class Refresh extends Component {
 
   fetchCoinData() {
     console.log("fetching data")
-    this.props.fetchCoinName(this.props.fromSymbol, this.props.coinList);
+    // this.props.fetchCoinName(this.props.fromSymbol, this.props.coinList);
     this.props.fetchCoinHistorical(this.props.fromSymbol, this.props.toSymbol, this.state.histoFormat);
     this.props.fetchCoinPrice(this.props.fromSymbol, this.props.toSymbol);
     this.props.fetchBlockHash();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.coinList && nextProps.coinList) {
-      this.fetchCoinData();
-    } else {
-      return;
-    }
-
     if (this.props.coinPrice !== nextProps.coinPrice) {
       clearTimeout(this.timeout);
       this.startPoll();
@@ -39,6 +33,7 @@ class Refresh extends Component {
       console.log("fetching list");
       this.props.fetchCoinList();
     }
+    this.fetchCoinData();
   }
 
   componentWillUnmount() {
@@ -52,8 +47,8 @@ class Refresh extends Component {
   render() { return null }
 }
 
-function mapStateToProps({coinName, coinPrice, blockHash}) {
-  return { coinName, coinPrice, blockHash };
+function mapStateToProps({coinName, coinList, coinPrice, blockHash}) {
+  return { coinName, coinList, coinPrice, blockHash };
 }
 
 function mapDispatchToProps(dispatch) {

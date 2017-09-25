@@ -11,6 +11,7 @@ class CoinPanel extends Component {
       var close_prices = this.props.coinHistorical.Data.map( Data => Data.close );
     }
 
+    console.log(this.props.coinPrice);
     if (this.props.coinPrice) {
       var fromSymbol = this.props.fromSymbol;
       var toSymbol = this.props.toSymbol;

@@ -11,7 +11,7 @@ export const FETCH_BLOCK_HASH = {
 export function fetchBlockHash() {
   var actionType = FETCH_BLOCK_HASH.SUCCESS;
   const url = `${PROXY_URL}${ROOT_URL}`;
-  const request = axios.get(url).catch(actionType = FETCH_BLOCK_HASH.FAIL);
+  const request = axios.get(url);
   // console.log(request);
 
   return {

@@ -22,6 +22,11 @@ class SearchBar extends Component {
     this.setState({ fromSymbol: event.target.value });
   }
 
+  componentWillMount() {
+    this.props.setCurrencySymbol(this.state.fromSymbol, this.state.toSymbol);
+  }
+
+
   onFormSubmit(event) {
     event.preventDefault();
     this.props.setCurrencySymbol(this.state.fromSymbol, this.state.toSymbol);

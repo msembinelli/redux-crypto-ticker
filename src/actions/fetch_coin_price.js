@@ -6,7 +6,7 @@ export const FETCH_COIN_PRICE_FAIL = 'FETCH_COIN_PRICE_FAIL';
 export function fetchCoinPrice(fromSymbol, toSymbol) {
   var actionType = FETCH_COIN_PRICE;
   const url = `${ROOT_URL}?fsyms=${fromSymbol}&tsyms=${toSymbol}`;
-  const request = axios.get(url).catch(actionType = FETCH_COIN_PRICE_FAIL);
+  const request = axios.get(url);
   //console.log(request);
 
   return {
