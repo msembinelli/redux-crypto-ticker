@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
+import { fetchBlockHash } from '../actions/fetch_block_hash';
 import InfoTable from '../components/info_table';
 
 class BlockchainPanel extends Component {
+
+  componentWillMount() {
+    this.props.fetchBlockHash();
+  }
+
   render() {
     if (this.props.blockHash) {
 
@@ -54,4 +60,8 @@ function mapStateToProps({blockHash}) {
   return { blockHash };
 }
 
-export default connect(mapStateToProps)(BlockchainPanel);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchBlockHash }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlockchainPanel);
