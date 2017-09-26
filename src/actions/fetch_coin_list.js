@@ -6,7 +6,7 @@ export const FETCH_COIN_LIST = 'FETCH_COIN_LIST';
 export function fetchCoinList() {
  const url = `${PROXY_URL}${ROOT_URL}`;
  const request = axios.get(url);
- console.log(request);
+ // console.log(request);
 
   return {
     type: FETCH_COIN_LIST,

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { fetchCoinList } from '../actions/fetch_coin_list';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -11,6 +12,10 @@ class SearchBar extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
     }
+
+  componentWillMount() {
+    this.props.fetchCoinList();
+  }
 
   onInputChange(event) {
     console.log(event.target.value);
@@ -39,4 +44,8 @@ class SearchBar extends Component {
   }
 }
 
-export default connect(null, null)(SearchBar);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchCoinList }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);
