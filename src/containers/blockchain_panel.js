@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchBlockHash } from '../actions/fetch_block_hash';
+import { fetchBlockHash, fetchBlockInfo, fetchBlockHashAndInfo } from '../actions/fetch_block_hash_and_info';
 import InfoTable from '../components/info_table';
 
 class BlockchainPanel extends Component {
 
   componentWillMount() {
-    this.props.fetchBlockHash();
+    this.props.fetchBlockHashAndInfo();
   }
 
   render() {
@@ -56,12 +56,12 @@ class BlockchainPanel extends Component {
   }
 }
 
-function mapStateToProps({blockHash}) {
-  return { blockHash };
+function mapStateToProps({blockHash, blockInfo}) {
+  return { blockHash, blockInfo };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchBlockHash }, dispatch);
+  return bindActionCreators({ fetchBlockHash, fetchBlockHash, fetchBlockHashAndInfo }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlockchainPanel);
