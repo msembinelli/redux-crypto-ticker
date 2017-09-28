@@ -3,7 +3,7 @@ import { FETCH_BLOCK_HASH_SUCCESS, FETCH_BLOCK_HASH_REQUEST, FETCH_BLOCK_HASH_FA
 export default function(state = null, action) {
   switch(action.type) {
     case FETCH_BLOCK_HASH_REQUEST:
-      return action.payload;
+      return state;
 
     case FETCH_BLOCK_HASH_SUCCESS:
       return action.payload.data.hash;

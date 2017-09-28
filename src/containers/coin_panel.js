@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Ticker from '../components/ticker'
 import Refresh from '../containers/refresh';
 import InfoTable from '../components/info_table';
+import Chart from '../components/chart';
+import OnClickButtonGroup from '../components/on_click_button_group';
 
 // Charts to implement:
 // 1h - sampled every minute (60m) / aggregate 2 == 30 samples
@@ -41,27 +43,24 @@ class CoinPanel extends Component {
       }
     }
 
+    var buttons = [{name: '1h', func: null}, {name: '12h', func: null}, {name: '1d', func: null},
+                   {name: '7d', func: null}, {name: '1m', func: null}, {name: '3m', func: null},
+                   {name: '6m', func: null}, {name: '1y', func: null}, {name: '5y', func: null},];
     return (
-      <div className='col-lg-4'>
-      <div className='card mx-auto'>
-      <Refresh />
-        <Ticker
-        name={ name }
-        iconSize='48px'
-        symbol={ symbol }
-        price={ price }
-        percent={ percent }
-        data={ close_prices } />
-        <div className='card-body'>
-          <InfoTable data={ tableData } />
+      <div className='col-sm-9'>
+        <Refresh />
+          <Ticker
+          name={ name }
+          iconSize='52px'
+          symbol={ symbol }
+          price={ price }
+          percent={ percent } />
+          <OnClickButtonGroup label='Historical Data Button Group' buttons={ buttons } />
+          <Chart data={ close_prices } />
+          <div>
+            <InfoTable data={ tableData } />
+          </div>
         </div>
-        <div className='card-footer'>
-          <p className="card-text">
-            <small className="text-muted">Updated every 20 seconds</small>
-          </p>
-        </div>
-      </div>
-      </div>
     );
   }
 }

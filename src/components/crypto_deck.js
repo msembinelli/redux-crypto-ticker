@@ -5,10 +5,14 @@ import SocialPanel from '../containers/social_panel';
 
 export default (props) => {
     return (
-      <div className='row align-items-center'>
-        <CoinPanel />
-        <BlockchainPanel />
-        <SocialPanel />
+      <div>
+        <div className='row content no-gutters'>
+          <CoinPanel />
+          <SocialPanel />
+        </div>
+        <div className='row content no-gutters'>
+            <BlockchainPanel />
+        </div>
       </div>
     );
 }

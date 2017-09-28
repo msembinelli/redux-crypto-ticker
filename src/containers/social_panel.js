@@ -11,32 +11,8 @@ class SocialPanel extends Component {
 // Sentiment index? pull from stocktwits for now
 
     return (
-      <div className='col-lg-4'>
-      <div className='card mx-auto'>
-      <div className='card-header'>
-        <div className='card-title resizing-text-extra-large'>Social</div>
-        <ul className="nav nav-tabs card-header-tabs">
-          <li className="nav-item">
-            <a className="nav-link active resizing-text-medium" href=''>Reddit</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link resizing-text-medium" href=''>Twitter</a>
-          </li>
-
-          <li className="nav-item">
-            <a className="nav-link resizing-text-medium" href=''>StockTwits</a>
-          </li>
-        </ul>
-
-      </div>
-        <div className='card-block card-body'>
-        </div>
-        <div className='card-footer'>
-          <p className="card-text">
-            <small className="text-muted">Updated every 20 seconds</small>
-          </p>
-        </div>
-      </div>
+      <div className='col-sm-3 sidenav'>
+        <div className='text-center resizing-text-extra-large'>Social</div>
       </div>
     );
   }

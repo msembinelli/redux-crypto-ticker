@@ -23,35 +23,10 @@ class BlockchainPanel extends Component {
     }
 
     return (
-      <div className='col-lg-4'>
-        <div className='card mx-auto'>
-          <div className='card-header'>
-            <div className='card-title resizing-text-extra-large'>Stats</div>
-              <ul className="nav nav-tabs card-header-tabs">
-                <li className="nav-item">
-                  <a className="nav-link active resizing-text-medium" href="#">Latest Block</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link resizing-text-medium" href="#">Blockchain</a>
-                </li>
-
-                <li className="nav-item">
-                  <a className="nav-link resizing-text-medium" href="#">Network</a>
-                </li>
-              </ul>
-          </div>
-          <div className='card-body'>
-            <div className='card-block'>
-              <InfoTable data={ tableBlockData } />
-            </div>
-          </div>
-          <div className='card-footer'>
-              <p className="card-text">
-                <small className="text-muted">Updated every 20 seconds</small>
-              </p>
-          </div>
+        <div>
+          <div className='text-center resizing-text-extra-large'>Stats</div>
+          <InfoTable data={ tableBlockData } />
         </div>
-      </div>
     );
   }
 }
