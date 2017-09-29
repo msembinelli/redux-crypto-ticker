@@ -8,11 +8,11 @@ export default (props) => {
     <div className='col-auto'>
         <div className='row align-items-end'>
             <div className='col-auto'>
-                <CoinIcon symbol={ props.symbol } size={ props.iconSize } />
+                <CoinIcon {...props} />
             </div>
             <div className='col-auto'>
-                <CoinName name={ props.name } symbol={ props.symbol } />
-                <PricePercent price={ props.price } percent={ props.percent } />
+                <CoinName {...props} />
+                <PricePercent {...props} />
             </div>
         </div>
     </div>

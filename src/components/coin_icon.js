@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as Icon from 'react-cryptocoins';
 
-export default class CoinIcon extends Component {
-  render() {
-    var symbolFirstLetterCapitalized = this.props.symbol.charAt(0).toUpperCase() + this.props.symbol.slice(1).toLowerCase();
+export default (props) => {
+    var symbolFirstLetterCapitalized = props.symbol.charAt(0).toUpperCase() + props.symbol.slice(1).toLowerCase();
     var DynamicCoinIcon = Icon[symbolFirstLetterCapitalized];
     return (
-      <DynamicCoinIcon className={this.props.symbol.toUpperCase()} size={this.props.size} />
+      <DynamicCoinIcon className={props.symbol.toUpperCase()} size={props.iconSize} />
     );
-  }
 }

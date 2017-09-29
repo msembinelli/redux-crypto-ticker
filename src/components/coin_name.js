@@ -2,7 +2,7 @@ import React from 'react';
 
 export default (props) => {
   return (
-    <div className='resizing-text-large'>
+    <div style={props.style}>
       { props.name } ({ props.symbol })
     </div>
   );

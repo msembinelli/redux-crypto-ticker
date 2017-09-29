@@ -21,6 +21,10 @@
   font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
 }
 
+.resizing-text-small {
+  font-size: calc(8px + (12 - 8) * ((100vw - 300px) / (1600 - 300)));
+}
+
 /* Override bootstrap-react-table cell text formatting */
 body .react-bs-table table td,
 body .react-bs-table table th {

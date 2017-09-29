@@ -6,7 +6,7 @@ import * as Icon from 'react-cryptocoins';
 export default (props) => {
     if (!props.tickerCoin || !props.tickerStats) {
         return(
-          <h3 className='resizing-text-18-26'>Loading...</h3>
+          <h3>Loading...</h3>
         );
     }
     return (
