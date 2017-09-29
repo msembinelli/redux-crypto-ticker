@@ -6,13 +6,11 @@ import SocialPanel from '../containers/social_panel';
 export default (props) => {
     return (
       <div>
-        <div className='row content no-gutters'>
+        <div>
           <CoinPanel />
           <SocialPanel />
         </div>
-        <div className='row content no-gutters'>
-            <BlockchainPanel />
-        </div>
+        <BlockchainPanel />
       </div>
     );
 }

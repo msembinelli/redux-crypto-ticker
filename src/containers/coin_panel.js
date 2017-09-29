@@ -3,26 +3,14 @@ import { connect } from 'react-redux';
 
 import Ticker from '../components/ticker'
 import Refresh from '../containers/refresh';
-import InfoTable from '../components/info_table';
 import Chart from '../components/chart';
 import OnClickButtonGroup from '../components/on_click_button_group';
-
-// Charts to implement:
-// 1h - sampled every minute (60m) / aggregate 2 == 30 samples
-// 6h - sampled every minute (360m) / aggregate 12 == 30 samples
-// 1d - sampled every hour (24h) / aggregate 1 == 24 samples
-// 5d - sampled every hour (120h) / aggregate 4 == 30 samples
-// 1m - sampled every day (30d) / aggregate 1 = 30 samples
-// 3m - sampled every day (90d) / aggregate 3 = 30 samples
-// 6m - sampled every day (180d) / aggregate 6 = 30 samples
-// 1y - sampled every day (360d) / aggregate 12 = 30 samples
-// Note: data can be aggregated so that we can have the same number of samples
-// on every request.
 
 class CoinPanel extends Component {
   render() {
     if (this.props.coinHistorical) {
-      var close_prices = this.props.coinHistorical.Data.map( Data => Data.close);
+      var closePrices = this.props.coinHistorical.Data.map( Data => Data.close);
+      var chart = { data: closePrices, style: { marginTop: '20px' } };
     }
 
     if (this.props.coinPrice) {
@@ -32,34 +20,36 @@ class CoinPanel extends Component {
       var supply = this.props.coinPrice.DISPLAY.BTC.USD.SUPPLY;
       var volume = this.props.coinPrice.DISPLAY.BTC.USD.VOLUME24HOURTO;
       var percent = this.props.coinPrice.DISPLAY.BTC.USD.CHANGEPCT24HOUR;
-      var tableData = [{ label: 'Market Cap', value: mktcap },
+      var open = this.props.coinPrice.DISPLAY.BTC.USD.OPEN24HOUR;
+      var high = this.props.coinPrice.DISPLAY.BTC.USD.HIGH24HOUR;
+      var low = this.props.coinPrice.DISPLAY.BTC.USD.LOW24HOUR;
+      var tableData = [[{ label: 'Market Cap', value: mktcap },
                        { label: 'Volume (24h)', value: volume },
-                       { label: 'Supply', value: supply }];
+                       { label: 'Supply', value: supply }],
+                       [{ label: 'Open', value: open },
+                       { label: 'High', value: high },
+                       { label: 'Low', value: low }]];
 
       if (this.props.coinList) {
         var name = this.props.coinList.Data[symbol].CoinName;
       } else {
         var name = this.props.coinName;
       }
+
+      var ticker = { tickerCoin: { name: name, iconSize: '52px', symbol: symbol, price: price, percent: percent }, tickerStats:{ statsData: tableData, style: {marginTop: '20px'} } }
     }
 
     var buttons = [{name: '1h', func: null}, {name: '12h', func: null}, {name: '1d', func: null},
                    {name: '7d', func: null}, {name: '1m', func: null}, {name: '3m', func: null},
                    {name: '6m', func: null}, {name: '1y', func: null}, {name: '5y', func: null},];
+    var onClickButtonGroup = {buttons: buttons, style: {marginTop: '20px'}, label: 'Historical Data Button Group'};
+
     return (
-      <div className='col-sm-9'>
+      <div>
         <Refresh />
-          <Ticker
-          name={ name }
-          iconSize='52px'
-          symbol={ symbol }
-          price={ price }
-          percent={ percent } />
-          <OnClickButtonGroup label='Historical Data Button Group' buttons={ buttons } />
-          <Chart data={ close_prices } />
-          <div>
-            <InfoTable data={ tableData } />
-          </div>
+          <Ticker {...ticker} />
+          <OnClickButtonGroup {...onClickButtonGroup} />
+          <Chart {...chart}  />
         </div>
     );
   }

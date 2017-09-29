@@ -11,7 +11,7 @@ class SocialPanel extends Component {
 // Sentiment index? pull from stocktwits for now
 
     return (
-      <div className='col-sm-3 sidenav'>
+      <div>
         <div className='text-center resizing-text-extra-large'>Social</div>
       </div>
     );

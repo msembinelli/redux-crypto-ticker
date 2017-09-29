@@ -24,7 +24,7 @@ class BlockchainPanel extends Component {
 
     return (
         <div>
-          <div className='text-center resizing-text-extra-large'>Stats</div>
+          <div className='resizing-text-extra-large'>Blockchain</div>
           <InfoTable data={ tableBlockData } />
         </div>
     );

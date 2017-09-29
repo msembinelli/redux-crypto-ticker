@@ -1,28 +1,18 @@
-import React from 'react';
-import PricePercent from './price_percent';
-import Coin from './coin';
-import CoinIcon from './coin_icon';
-import Chart from './chart';
+import React, { Component } from 'react';
+import TickerCoin from './ticker_coin';
+import TickerStats from './ticker_stats';
 import * as Icon from 'react-cryptocoins';
 
 export default (props) => {
-    if (!props.symbol || !props.iconSize || !props.name || !props.percent || !props.price) {
+    if (!props.tickerCoin || !props.tickerStats) {
         return(
           <h3 className='resizing-text-18-26'>Loading...</h3>
         );
     }
     return (
-        <div>
-            <div className='row content align-items-end'>
-                <div className='col-sm-auto'>
-                    <CoinIcon symbol={ props.symbol } size={ props.iconSize } />
-                </div>
-                <div className='col-sm-auto'>
-                <Coin name={ props.name } symbol={ props.symbol } />
-                <PricePercent price={ props.price } percent={ props.percent } />
-                </div>
-            </div>
-          <Chart data={ props.data } />
+        <div className='row align-items-end'>
+            <TickerCoin {...props.tickerCoin} />
+            {props.tickerStats.statsData.map((tableData) => { return <TickerStats style={props.tickerStats.style} key={tableData[0].label + tableData[0].value} tableData={tableData} /> })}
         </div>
     );
 }
