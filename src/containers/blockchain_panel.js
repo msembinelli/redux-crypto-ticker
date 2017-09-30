@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchBlockHash, fetchBlockInfo, fetchBlockHashAndInfo } from '../actions/fetch_block_hash_and_info';
-import InfoTable from '../components/info_table';
+import TickerStats from '../components/ticker_stats'
 
 class BlockchainPanel extends Component {
 
@@ -10,22 +10,35 @@ class BlockchainPanel extends Component {
     this.props.fetchBlockHashAndInfo();
   }
 
+  renderTickerStats(tickerStats) {
+    if (!tickerStats) {
+      return (
+        <div>Loading...</div>
+      );
+    }
+    return (
+      <div className='row align-items-end'>
+      {tickerStats.statsData.map((tableData) => { return <TickerStats style={tickerStats.style} key={tableData[0].label + tableData[0].value} tableData={tableData} /> })}
+      </div>
+    );
+  }
+
   render() {
     if (this.props.blockHash) {
 
-      var tableBlockData = [{ label: 'Block Hash', value: this.props.blockHash },
+      var tableBlockData = [[{ label: 'Block Hash', value: this.props.blockHash },
                        { label: '# of Transactions', value: 48153 },
-                       { label: 'Block Height', value: 48153 },
-                       { label: 'Mined By', value: 'Slushpool' },
+                       { label: 'Block Height', value: 28153 }],
+                       [{ label: 'Mined By', value: 'Slushpool' },
                        { label: 'Reward', value: '12.5 BTC' },
-                       { label: 'Timestamp', value: 1234567 }
-                     ];
+                       { label: 'Timestamp', value: 1234567 }]];
+     var tickerStats = { statsData: tableBlockData, style: {marginTop: '20px', fontSize: 'calc(10px + (14 - 10) * ((100vw - 300px) / (1600 - 300)))'} };
     }
 
     return (
         <div>
           <div className='resizing-text-extra-large'>Blockchain</div>
-          <InfoTable data={ tableBlockData } />
+          {this.renderTickerStats(tickerStats)}
         </div>
     );
   }

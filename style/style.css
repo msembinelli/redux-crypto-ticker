@@ -5,10 +5,6 @@
   margin-top: 10px;
 }
 
-.col-hidden {
-  display: none;
-}
-
 .resizing-text-extra-large {
   font-size: calc(22px + (26 - 22) * ((100vw - 300px) / (1600 - 300)));
 }

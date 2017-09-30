@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import InfoTable from '../components/info_table';
-
 class SocialPanel extends Component {
   render() {
 
