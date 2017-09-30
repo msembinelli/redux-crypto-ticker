@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 module.exports = {
   entry: {
     'app': [
@@ -21,6 +22,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
+  plugins: [
+    new webpack.NamedModulesPlugin()
+  ],
   devServer: {
     historyApiFallback: true,
     contentBase: './'

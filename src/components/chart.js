@@ -1,13 +1,26 @@
 import React from 'react';
-import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
+import { render } from 'react-dom';
+import CandleChart from './candle_chart';
+import { getData } from "./utils"
 
-export default (props) => {
-  return (
-    <div style={props.style}>
-      <Sparklines height={100} data={props.data}>
-        <SparklinesLine color="#1c8cdc" />
-        <SparklinesSpots />
-      </Sparklines>
-    </div>
-  );
+import { TypeChooser } from "react-stockcharts/lib/helper";
+
+
+class Chart extends React.Component {
+	componentDidMount() {
+		getData().then(data => {
+			this.setState({ data })
+		})
+	}
+	render() {
+		if (this.state == null) {
+			return <div>Loading...</div>
+		}
+		console.log(this.state.data);
+		return (
+				<CandleChart type={"svg"} data={this.state.data} />
+		)
+	}
 }
+
+export default Chart;

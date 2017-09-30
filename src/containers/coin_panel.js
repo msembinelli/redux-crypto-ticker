@@ -50,7 +50,7 @@ class CoinPanel extends Component {
         <Refresh />
           <Ticker {...ticker} />
           <OnClickButtonGroup {...onClickButtonGroup} />
-          <Chart {...chart}  />
+          <Chart {...chart}/>
         </div>
     );
   }

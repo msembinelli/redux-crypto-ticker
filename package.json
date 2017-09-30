@@ -22,6 +22,7 @@
     "jquery": "^2.2.1",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
+    "name-all-modules-plugin": "^1.0.1",
     "react-hot-loader": "^3.0.0-beta.7",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
@@ -31,6 +32,7 @@
     "axios": "^0.16.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-stage-1": "^6.1.18",
+    "d3": "^4.10.2",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-cryptocoins": "^1.0.8",
