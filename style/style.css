@@ -5,31 +5,6 @@
   margin-top: 10px;
 }
 
-.resizing-text-extra-large {
-  font-size: calc(22px + (26 - 22) * ((100vw - 300px) / (1600 - 300)));
-}
-
-.resizing-text-large {
-  font-size: calc(18px + (22 - 18) * ((100vw - 300px) / (1600 - 300)));
-}
-
-.resizing-text-medium {
-  font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
-}
-
-.resizing-text-small {
-  font-size: calc(8px + (12 - 8) * ((100vw - 300px) / (1600 - 300)));
-}
-
-/* Override bootstrap-react-table cell text formatting */
-body .react-bs-table table td,
-body .react-bs-table table th {
-  overflow: hidden;
-  white-space: normal;
-  text-overflow: clip;
-  word-wrap: break-word;
-}
-
 .box{
   border:1px solid;
 }
