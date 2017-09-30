@@ -10,8 +10,8 @@ export default (props) => {
         );
     }
     return (
-        <div className='row align-items-end'>
-            <div className='col-xs-6 mr-auto mx-auto'>
+        <div className='row align-items-end justify-content-center'>
+            <div className='col-xs-6 mx-auto'>
                 <TickerCoin {...props.tickerCoin} />
             </div>
             <div className='col-xs-6 mx-auto' style={props.tickerStats.style}>

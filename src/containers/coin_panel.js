@@ -40,17 +40,18 @@ class CoinPanel extends Component {
                     tickerStats:{ statsData: tableData, style: {marginTop: '20px', fontSize: 'calc(10px + (14 - 10) * ((100vw - 300px) / (1600 - 300)))'} } }
     }
 
-    var buttons = [{name: '1h', func: null}, {name: '12h', func: null}, {name: '1d', func: null},
-                   {name: '7d', func: null}, {name: '1m', func: null}, {name: '3m', func: null},
-                   {name: '6m', func: null}, {name: '1y', func: null}, {name: '5y', func: null},];
-    var onClickButtonGroup = {buttons: buttons, style: {marginLeft: '30px', marginTop: '20px'}, label: 'Historical Data Button Group'};
+    var buttons = [{name: '1h', func: null}, {name: '1d', func: null},
+                   {name: '7d', func: null}, {name: '1m', func: null},
+                   {name: '3m', func: null}, {name: '6m', func: null},
+                   {name: '1y', func: null}, {name: '5y', func: null},];
+    var onClickButtonGroup = {buttons: buttons, style: {marginTop: '20px'}, label: 'Historical Data Button Group'};
 
     return (
       <div>
         <Refresh />
           <Ticker {...ticker} />
-          <OnClickButtonGroup {...onClickButtonGroup} />
           <Chart {...chart}/>
+          <OnClickButtonGroup {...onClickButtonGroup} />
         </div>
     );
   }
