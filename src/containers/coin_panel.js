@@ -43,7 +43,7 @@ class CoinPanel extends Component {
     var buttons = [{name: '1h', func: null}, {name: '12h', func: null}, {name: '1d', func: null},
                    {name: '7d', func: null}, {name: '1m', func: null}, {name: '3m', func: null},
                    {name: '6m', func: null}, {name: '1y', func: null}, {name: '5y', func: null},];
-    var onClickButtonGroup = {buttons: buttons, style: {marginTop: '20px'}, label: 'Historical Data Button Group'};
+    var onClickButtonGroup = {buttons: buttons, style: {marginLeft: '30px', marginTop: '20px'}, label: 'Historical Data Button Group'};
 
     return (
       <div>
