@@ -7,7 +7,7 @@ export default (props) => {
   return (
       <div className='row align-items-center justify-content-center text-center no-gutters'>
           <div className='col-lg-1'>
-              <CoinIcon {...props.tickerCoinName} />
+              <CoinIcon {...props.tickerCoinIcon} />
           </div>
           <div className='col-lg-4'>
               <CoinName {...props.tickerCoinName} />

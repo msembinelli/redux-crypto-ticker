@@ -36,7 +36,8 @@ class CoinPanel extends Component {
         var name = this.props.coinName;
       }
 
-      var ticker = { tickerCoin: { tickerCoinName:  { name: name, iconSize: '50px', symbol: symbol, style:  {fontSize: 'calc(18px + (20 - 18) * ((100vw - 300px) / (1600 - 300)))' } },
+      var ticker = { tickerCoin: { tickerCoinName:  { name: name, symbol: symbol, style:  {fontSize: 'calc(18px + (20 - 18) * ((100vw - 300px) / (1600 - 300)))' } },
+                                   tickerCoinIcon: { iconSize: '50px', symbol: symbol },
                                    tickerCoinPrice: { price, percent: percent, style:{fontSize: 'calc(22px + (30 - 22) * ((100vw - 300px) / (1600 - 300)))' } } },
                      tickerStats:{ statsData: tableData, style: {marginTop: '10px', fontSize: 'calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300)))'} } }
     }
