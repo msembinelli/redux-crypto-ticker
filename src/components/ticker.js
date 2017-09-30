@@ -10,13 +10,15 @@ export default (props) => {
         );
     }
     return (
-        <div className='row align-items-end justify-content-center'>
-            <div className='col-xs-6 mx-auto'>
+        <div className='row align-items-end'>
+            <div className='col-lg-6 col-sm-12'>
                 <TickerCoin {...props.tickerCoin} />
             </div>
-            <div className='col-xs-6 mx-auto' style={props.tickerStats.style}>
-                <div className='row align-items-end'>
-                    {props.tickerStats.statsData.map((tableData) => { return <TickerStats style={props.tickerStats.style} key={tableData[0].label + tableData[0].value} tableData={tableData} /> })}
+            <div className='col-lg-6 col-sm-12' style={props.tickerStats.style}>
+                <div className='row justify-content-center'>
+                    {props.tickerStats.statsData.map((tableData) => {
+                        return <div key={tableData[0].label + tableData[0].value} className='col-auto'><TickerStats style={props.tickerStats.style} tableData={tableData} /></div>
+                    })}
                 </div>
             </div>
         </div>

@@ -29,3 +29,7 @@ body .react-bs-table table th {
   text-overflow: clip;
   word-wrap: break-word;
 }
+
+.box{
+  border:1px solid;
+}

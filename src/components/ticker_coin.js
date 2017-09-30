@@ -5,16 +5,16 @@ import CoinIcon from './coin_icon';
 
 export default (props) => {
   return (
-    <div className='col-auto'>
-        <div className='row align-items-end'>
-            <div className='col-auto'>
-                <CoinIcon {...props} />
-            </div>
-            <div className='col-auto'>
-                <CoinName {...props} />
-                <PricePercent {...props} />
-            </div>
+      <div className='row align-items-center justify-content-center text-center'>
+          <div className='col-lg-2'>
+              <CoinIcon {...props.tickerCoinName} />
+          </div>
+          <div className='col-lg-4'>
+              <CoinName {...props.tickerCoinName} />
         </div>
-    </div>
+          <div className='col-lg-6'>
+              <PricePercent {...props.tickerCoinPrice} />
+          </div>
+      </div>
   );
 }
