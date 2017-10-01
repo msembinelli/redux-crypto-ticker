@@ -1,10 +1,4 @@
-import axios from 'axios';
-
-const PROXY_URL = 'http://localhost:8081/'; // TODO: Deploy to separate server
-
-export const REQUEST = 'REQUEST';
-export const SUCCESS = 'SUCCESS';
-export const FAILURE = 'FAILURE';
+import { axiosFetch, PROXY_URL, REQUEST, SUCCESS, FAILURE } from './api_utils';
 
 const LATEST_BLOCK_URL = 'https://blockchain.info/latestblock';
 export const FETCH_BLOCK_HASH = 'FETCH_BLOCK_HASH_';
@@ -17,27 +11,6 @@ export const FETCH_BLOCK_INFO = 'FETCH_BLOCK_INFO_';
 export const FETCH_BLOCK_INFO_REQUEST = FETCH_BLOCK_INFO + REQUEST;
 export const FETCH_BLOCK_INFO_SUCCESS = FETCH_BLOCK_INFO + SUCCESS;
 export const FETCH_BLOCK_INFO_FAILURE = FETCH_BLOCK_INFO + FAILURE;
-
-function axiosFetch(type, url) {
-    return dispatch => {
-    // Reducers may handle this to set a flag like isFetching
-    dispatch({ type: type + REQUEST, payload: url })
-
-    // Perform the actual API call
-    return axios.get(url).then(
-      response => {
-        // Reducers may handle this to show the data and reset isFetching
-        dispatch({ type: type + SUCCESS,  payload: response })
-      },
-      error => {
-        // Reducers may handle this to reset isFetching
-        dispatch({ type: type + FAILURE,  error: response.error })
-        // Rethrow so returned Promise is rejected
-        throw error
-      }
-    )
-  }
-}
 
 export function fetchBlockHash() {
   return axiosFetch(FETCH_BLOCK_HASH, `${PROXY_URL}${LATEST_BLOCK_URL}`);
