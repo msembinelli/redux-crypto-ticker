@@ -1,26 +1,14 @@
 import React from 'react';
-import { render } from 'react-dom';
 import CandleChart from './candle_chart';
-import { getData } from "./utils"
-
 import { TypeChooser } from "react-stockcharts/lib/helper";
 
 
-class Chart extends React.Component {
-	componentDidMount() {
-		getData().then(data => {
-			this.setState({ data })
-		})
+export default (props) => {
+	if (props.data == null) {
+		return <div>Loading...</div>
 	}
-	render() {
-		if (this.state == null) {
-			return <div>Loading...</div>
-		}
-		console.log(this.state.data);
-		return (
-				<CandleChart type={"svg"} data={this.state.data} />
-		)
-	}
-}
 
-export default Chart;
+	return (
+			<CandleChart type={"svg"} data={props.data} />
+	)
+}

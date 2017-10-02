@@ -2,7 +2,7 @@ import { SET_HISTORICAL_FORMAT, HISTO_TYPE } from '../actions/set_historical_for
 
 const initialFormat = {
   histoType: HISTO_TYPE.HOUR,
-  limit: '23',
+  limit: '300',
   aggregate: '1'
 }
 

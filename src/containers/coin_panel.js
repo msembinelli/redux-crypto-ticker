@@ -17,8 +17,9 @@ class CoinPanel extends Component {
         <div className='text-center'>Loading...</div>
       );
     }
-    var closePrices = this.props.coinPriceHistorical.map( Data => Data.close );
-    var chart = { data: closePrices, style: { marginTop: '20px' } };
+
+    this.props.coinPriceHistorical.map( element => element.date = new Date(element.time * 1000) );
+    var chart = { data: this.props.coinPriceHistorical, style: { marginTop: '20px' } };
     var price = this.props.coinPrice[fromSymbol][toSymbol].PRICE;
     var mktcap = this.props.coinPrice[fromSymbol][toSymbol].MKTCAP;
     var supply = this.props.coinPrice[fromSymbol][toSymbol].SUPPLY;

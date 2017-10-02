@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import { scaleTime } from "d3-scale";
-import { utcDay } from "d3-time";
+import { utcDay, utcHour } from "d3-time";
 
 import { ChartCanvas, Chart } from "react-stockcharts";
 import { CandlestickSeries } from "react-stockcharts/lib/series";
@@ -14,10 +14,7 @@ class CandleStickChart extends Component {
 	render() {
 		const { type, width, data, ratio } = this.props;
 		const xAccessor = d => d.date;
-		const xExtents = [
-			xAccessor(last(data)),
-			xAccessor(data[data.length - 100])
-		];
+
 		return (
 			<ChartCanvas height={400}
 					ratio={ratio}
@@ -27,13 +24,12 @@ class CandleStickChart extends Component {
 					seriesName="MSFT"
 					data={data}
 					xAccessor={xAccessor}
-					xScale={scaleTime()}
-					xExtents={xExtents}>
+					xScale={scaleTime()}>
 
 				<Chart id={1} yExtents={d => [d.high, d.low]}>
 					<XAxis axisAt="bottom" orient="bottom" ticks={6}/>
 					<YAxis axisAt="left" orient="left" ticks={5} />
-					<CandlestickSeries width={timeIntervalBarWidth(utcDay)}/>
+					<CandlestickSeries width={timeIntervalBarWidth(utcHour)}/>
 				</Chart>
 			</ChartCanvas>
 		);
