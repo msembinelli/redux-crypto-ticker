@@ -33,7 +33,7 @@ class SearchBar extends Component {
     }
 
   coinSearch(fromSymbol) {
-    if (fromSymbol.length < 3) {
+    if (fromSymbol.length < 2) {
       return;
     }
     if (this.props.coinList.Data[fromSymbol]) {
