@@ -2,9 +2,12 @@ import React from 'react';
 import * as Icon from 'react-cryptocoins';
 
 export default (props) => {
-    var symbolFirstLetterCapitalized = props.symbol.charAt(0).toUpperCase() + props.symbol.slice(1).toLowerCase();
-    var DynamicCoinIcon = Icon[symbolFirstLetterCapitalized];
+    var fromSymbolFirstLetterCapitalized = props.fromSymbol.charAt(0).toUpperCase() + props.fromSymbol.slice(1).toLowerCase();
+    var DynamicCoinIcon = Icon[fromSymbolFirstLetterCapitalized];
+    if (fromSymbolFirstLetterCapitalized.length < 3 || !Icon[fromSymbolFirstLetterCapitalized]) {
+        return (<div></div>);
+    }
     return (
-      <DynamicCoinIcon className={props.symbol.toUpperCase()} size={props.iconSize} />
+      <DynamicCoinIcon className={props.fromSymbol.toUpperCase()} size={props.iconSize} />
     );
 }

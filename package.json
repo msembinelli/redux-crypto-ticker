@@ -30,9 +30,11 @@
   "dependencies": {
     "ajv": "^5.2.3",
     "axios": "^0.16.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-stage-1": "^6.1.18",
     "d3": "^4.10.2",
+    "lodash": "^4.17.4",
     "mdbootstrap": "^4.4.1",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",

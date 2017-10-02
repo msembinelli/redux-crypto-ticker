@@ -2,45 +2,44 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Ticker from '../components/ticker'
-import Refresh from '../containers/refresh';
 import Chart from '../components/chart';
 import OnClickButtonGroup from '../components/on_click_button_group';
 
 class CoinPanel extends Component {
   render() {
-    if (this.props.coinHistorical) {
-      var closePrices = this.props.coinHistorical.Data.map( Data => Data.close);
-      var chart = { data: closePrices, style: { marginTop: '20px' } };
+    var fromSymbol = this.props.fromSymbol;
+    var toSymbol = this.props.toSymbol;
+    var coinPrice = this.props.coinPrice;
+    var coinPriceHistorical = this.props.coinPriceHistorical;
+
+    if (!fromSymbol || !coinPrice || !coinPriceHistorical || !coinPrice[fromSymbol] || !coinPrice[fromSymbol][toSymbol]) {
+      return (
+        <div className='text-center'>Loading...</div>
+      );
     }
+    var closePrices = this.props.coinPriceHistorical.map( Data => Data.close );
+    var chart = { data: closePrices, style: { marginTop: '20px' } };
+    var price = this.props.coinPrice[fromSymbol][toSymbol].PRICE;
+    var mktcap = this.props.coinPrice[fromSymbol][toSymbol].MKTCAP;
+    var supply = this.props.coinPrice[fromSymbol][toSymbol].SUPPLY;
+    var volume = this.props.coinPrice[fromSymbol][toSymbol].VOLUME24HOURTO;
+    var percent = this.props.coinPrice[fromSymbol][toSymbol].CHANGEPCT24HOUR;
+    var open = this.props.coinPrice[fromSymbol][toSymbol].OPEN24HOUR;
+    var high = this.props.coinPrice[fromSymbol][toSymbol].HIGH24HOUR;
+    var low = this.props.coinPrice[fromSymbol][toSymbol].LOW24HOUR;
+    var tableData = [[{ label: 'Market Cap', value: mktcap },
+                     { label: 'Volume (24h)', value: volume },
+                     { label: 'Supply', value: supply }],
+                     [{ label: 'Open', value: open },
+                     { label: 'High', value: high },
+                     { label: 'Low', value: low }]];
 
-    if (this.props.coinPrice) {
-      var symbol = this.props.coinPrice.RAW.BTC.USD.FROMSYMBOL;
-      var price = this.props.coinPrice.DISPLAY.BTC.USD.PRICE;
-      var mktcap = this.props.coinPrice.DISPLAY.BTC.USD.MKTCAP;
-      var supply = this.props.coinPrice.DISPLAY.BTC.USD.SUPPLY;
-      var volume = this.props.coinPrice.DISPLAY.BTC.USD.VOLUME24HOURTO;
-      var percent = this.props.coinPrice.DISPLAY.BTC.USD.CHANGEPCT24HOUR;
-      var open = this.props.coinPrice.DISPLAY.BTC.USD.OPEN24HOUR;
-      var high = this.props.coinPrice.DISPLAY.BTC.USD.HIGH24HOUR;
-      var low = this.props.coinPrice.DISPLAY.BTC.USD.LOW24HOUR;
-      var tableData = [[{ label: 'Market Cap', value: mktcap },
-                       { label: 'Volume (24h)', value: volume },
-                       { label: 'Supply', value: supply }],
-                       [{ label: 'Open', value: open },
-                       { label: 'High', value: high },
-                       { label: 'Low', value: low }]];
+    var name = this.props.coinName;
 
-      if (this.props.coinList) {
-        var name = this.props.coinList.Data[symbol].CoinName;
-      } else {
-        var name = this.props.coinName;
-      }
-
-      var ticker = { tickerCoin: { tickerCoinName:  { name: name, symbol: symbol, style:  {fontSize: 'calc(18px + (20 - 18) * ((100vw - 300px) / (1600 - 300)))' } },
-                                   tickerCoinIcon: { iconSize: '50px', symbol: symbol },
-                                   tickerCoinPrice: { price, percent: percent, style:{fontSize: 'calc(22px + (30 - 22) * ((100vw - 300px) / (1600 - 300)))' } } },
-                     tickerStats:{ statsData: tableData, style: {marginTop: '10px', fontSize: 'calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300)))'} } }
-    }
+    var ticker = { tickerCoin: { tickerCoinName:  { name: name, fromSymbol: fromSymbol, style: {fontSize: 'calc(18px + (20 - 18) * ((100vw - 300px) / (1600 - 300)))' } },
+                                 tickerCoinIcon: { iconSize: '50px', fromSymbol: fromSymbol },
+                                 tickerCoinPrice: { price, percent: percent, style:{fontSize: 'calc(22px + (30 - 22) * ((100vw - 300px) / (1600 - 300)))' } } },
+                   tickerStats:{ statsData: tableData, style: {marginTop: '10px', fontSize: 'calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300)))'} } }
 
     var buttons = [{name: '1h', func: null}, {name: '1d', func: null},
                    {name: '7d', func: null}, {name: '1m', func: null},
@@ -50,7 +49,6 @@ class CoinPanel extends Component {
 
     return (
       <div>
-        <Refresh />
           <Ticker {...ticker} />
           <Chart {...chart}/>
           <OnClickButtonGroup {...onClickButtonGroup} />
@@ -59,8 +57,8 @@ class CoinPanel extends Component {
   }
 }
 
-function mapStateToProps({coinName, coinList, coinHistorical, coinPrice}) {
-  return { coinName, coinList, coinHistorical, coinPrice };
+function mapStateToProps({fromSymbol, toSymbol, coinName, coinPriceHistorical, coinPrice }) {
+  return { fromSymbol, toSymbol, coinName, coinPriceHistorical, coinPrice };
 }
 
 export default connect(mapStateToProps)(CoinPanel);

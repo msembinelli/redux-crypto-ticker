@@ -2,47 +2,70 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchCoinListAndName } from '../actions/fetch_coin_list';
+import { fetchCoinName } from '../actions/fetch_coin_name';
+import { setFromSymbol, setToSymbol } from '../actions/set_symbols';
+import { fetchCoinPrice, fetchCoinPriceHistorical, HISTO_TYPE } from '../actions/fetch_coin_price';
+import _ from 'lodash';
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {term: 'BTC'};
+    this.state = {fromSymbol: 'BTC', toSymbol: 'USD'};
+
+    this.coinSearchDebounced = _.debounce((fromSymbol) => { this.coinSearch(fromSymbol) }, 300);
 
     this.onInputChange = this.onInputChange.bind(this);
-    this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.coinSearch = this.coinSearch.bind(this);
     }
 
   componentWillMount() {
-    this.props.fetchCoinListAndName(this.state.term);
+    this.props.fetchCoinListAndName(this.state.fromSymbol);
+    this.props.setFromSymbol(this.state.fromSymbol);
+    this.props.setToSymbol(this.state.toSymbol);
+    this.props.fetchCoinPrice(this.state.fromSymbol, this.state.toSymbol);
+    this.props.fetchCoinPriceHistorical(this.state.fromSymbol, this.state.toSymbol, this.props.historicalFormat);
   }
 
-  onInputChange(event) {
-    console.log(event.target.value);
-    this.setState({ term: event.target.value });
-  }
+  onInputChange(fromSymbol) {
+    this.setState({ fromSymbol: fromSymbol });
+    this.coinSearchDebounced(fromSymbol);
+    }
 
-  onFormSubmit(event) {
-    event.preventDefault();
-
-    this.setState({term: ''});
+  coinSearch(fromSymbol) {
+    if (fromSymbol.length < 3) {
+      return;
+    }
+    if (this.props.coinList.Data[fromSymbol]) {
+      console.log("name found ", this.props.coinList.Data[fromSymbol].CoinName);
+      this.props.fetchCoinName(fromSymbol);
+      this.props.setFromSymbol(fromSymbol);
+      this.props.setToSymbol(this.state.toSymbol);
+      this.props.fetchCoinPrice(fromSymbol, this.state.toSymbol);
+      this.props.fetchCoinPriceHistorical(fromSymbol, this.state.toSymbol, this.props.historicalFormat);
+    }
+    console.log('name not found');
   }
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit} className="input-group input-group-sm">
+      <div className="input-group input-group-sm">
         <input
-          placeholder="BTC"
+          placeholder="Enter a ticker..."
           className="form-control"
-          value={this.state.term}
-          onChange={this.onInputChange} />
-      </form>
+          value={this.state.fromSymbol}
+          onChange={event => this.onInputChange(event.target.value)} />
+      </div>
     );
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCoinListAndName }, dispatch);
+function mapStateToProps({ coinList, historicalFormat }) {
+  return { coinList, historicalFormat };
 }
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchCoinPrice, fetchCoinPriceHistorical, fetchCoinListAndName, fetchCoinName, setToSymbol, setFromSymbol }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
