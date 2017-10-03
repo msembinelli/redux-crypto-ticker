@@ -1,8 +1,8 @@
 import { SET_HISTORICAL_FORMAT, HISTO_TYPE } from '../actions/set_historical_format';
 
 const initialFormat = {
-  histoType: HISTO_TYPE.HOUR,
-  limit: '300',
+  histoType: HISTO_TYPE.DAY,
+  limit: '900',
   aggregate: '1'
 }
 

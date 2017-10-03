@@ -3,18 +3,16 @@ import { connect } from 'react-redux';
 
 import Ticker from '../components/ticker'
 import Chart from '../components/chart';
+import LoadingAnimation from 'react-loading-animation';
 import OnClickButtonGroup from '../components/on_click_button_group';
 
 class CoinPanel extends Component {
   render() {
-    var fromSymbol = this.props.fromSymbol;
-    var toSymbol = this.props.toSymbol;
-    var coinPrice = this.props.coinPrice;
-    var coinPriceHistorical = this.props.coinPriceHistorical;
+    let { fromSymbol, toSymbol, coinPrice, coinPriceHistorical } = this.props;
 
     if (!fromSymbol || !coinPrice || !coinPriceHistorical || !coinPrice[fromSymbol] || !coinPrice[fromSymbol][toSymbol]) {
       return (
-        <div className='text-center'>Loading...</div>
+        <div><LoadingAnimation /></div>
       );
     }
 
