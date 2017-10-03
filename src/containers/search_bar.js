@@ -44,7 +44,9 @@ class SearchBar extends Component {
       this.props.fetchCoinPrice(fromSymbol, this.state.toSymbol);
       this.props.fetchCoinPriceHistorical(fromSymbol, this.state.toSymbol, this.props.historicalFormat);
     }
-    console.log('name not found');
+    else {
+      console.log('name not found');
+    }
   }
 
   render() {

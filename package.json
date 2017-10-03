@@ -38,7 +38,7 @@
     "mdbootstrap": "^4.4.1",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
-    "react-cryptocoins": "^1.0.8",
+    "react-cryptocoins": "^1.0.9",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",

@@ -13,8 +13,14 @@ export function axiosFetch(type, url) {
     // Perform the actual API call
     return axios.get(url).then(
       response => {
-        // Reducers may handle this to show the data and reset isFetching
-        dispatch({ type: type + SUCCESS,  payload: response, isFetching: false })
+        if (response.data.Response == 'Error') {
+          dispatch({ type: type + FAILURE,  error: response.data.Message, isFetching: false })
+          throw response.data.Message
+        }
+        else {
+          // Reducers may handle this to show the data and reset isFetching
+          dispatch({ type: type + SUCCESS,  payload: response, isFetching: false })
+        }
       },
       error => {
         // Reducers may handle this to reset isFetching
