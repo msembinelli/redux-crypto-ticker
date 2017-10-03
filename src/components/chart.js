@@ -1,6 +1,5 @@
 import React from 'react';
 import CandleChart from './candle_chart';
-import { TypeChooser } from "react-stockcharts/lib/helper";
 
 
 export default (props) => {
@@ -9,6 +8,6 @@ export default (props) => {
 	}
 
 	return (
-			<CandleChart type={"svg"} data={props.data} />
+			<CandleChart type={"hybrid"} data={props.data} />
 	)
 }
