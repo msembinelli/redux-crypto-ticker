@@ -12,7 +12,7 @@ class CoinPanel extends Component {
 
     if (!fromSymbol || !coinPrice || !coinPriceHistorical || !coinPrice[fromSymbol] || !coinPrice[fromSymbol][toSymbol]) {
       return (
-        <div><LoadingAnimation /></div>
+        <div style={{marginTop: '200px'}}><LoadingAnimation /></div>
       );
     }
 
