@@ -39,10 +39,10 @@ class SearchBar extends Component {
     if (this.props.coinList.Data[fromSymbol]) {
       console.log("name found ", this.props.coinList.Data[fromSymbol].CoinName);
       this.props.fetchCoinName(fromSymbol);
-      this.props.setFromSymbol(fromSymbol);
-      this.props.setToSymbol(this.state.toSymbol);
       this.props.fetchCoinPrice(fromSymbol, this.state.toSymbol);
       this.props.fetchCoinPriceHistorical(fromSymbol, this.state.toSymbol, this.props.historicalFormat);
+      this.props.setFromSymbol(fromSymbol);
+      this.props.setToSymbol(this.state.toSymbol);
     }
     else {
       console.log('name not found');
@@ -51,12 +51,25 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="input-group input-group-sm">
+      <div className='row align-items-center justify-content-center'>
+      <div className="input-group input-group-sm col-lg-4">
         <input
           placeholder="Enter a ticker..."
           className="form-control"
           value={this.state.fromSymbol}
           onChange={event => this.onInputChange(event.target.value)} />
+      </div>
+      <div className="btn-group col-lg-2">
+          <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Basic dropdown</button>
+
+          <div className="dropdown-menu">
+              <a className="dropdown-item" href="#">Action</a>
+              <a className="dropdown-item" href="#">Another action</a>
+              <a className="dropdown-item" href="#">Something else here</a>
+              <div className="dropdown-divider"></div>
+              <a className="dropdown-item" href="#">Separated link</a>
+          </div>
+      </div>
       </div>
     );
   }

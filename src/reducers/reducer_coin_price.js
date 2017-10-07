@@ -5,11 +5,11 @@ const initialFormat = null;
 export default function(state = initialFormat, action) {
   switch(action.type) {
     case FETCH_COIN_PRICE_REQUEST:
-      return state;
+      return initialFormat;
     case FETCH_COIN_PRICE_SUCCESS:
       return action.payload.data.DISPLAY;
     case FETCH_COIN_PRICE_FAILURE:
-      return state;
+      return initialFormat;
   }
   return state;
 }
